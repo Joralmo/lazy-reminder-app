@@ -1,9 +1,8 @@
-import { contextBridge } from 'electron';
+import { contextBridge } from "electron";
+import { LocalStorage } from "./store";
 
-contextBridge.exposeInMainWorld(
-    'electronTools',
-    {
-        showBreaksIn: 1,
-        intervalForBreaks: 15
-    }
-)
+const Store = new LocalStorage();
+
+contextBridge.exposeInMainWorld("electronTools", {
+  Store,
+});
