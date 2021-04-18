@@ -31,7 +31,11 @@
           <v-row>
             <v-col cols="12">
               <v-container fluid>
-                <v-radio-group v-model="showBreaksIn" class="d-flex">
+                <v-radio-group
+                  v-model="showBreaksIn"
+                  class="d-flex"
+                  @change="onChangeChekBoxes"
+                >
                   <v-row>
                     <v-col cols="2"></v-col>
                     <v-col cols="4"
@@ -51,6 +55,7 @@
         <v-container>
           <v-row>
             <v-slider
+              @change="onChangeSlider"
               v-model="intervalForBreaks"
               :label="$t('intervalForBreaks')"
               thumb-label="always"
@@ -65,20 +70,27 @@
 </template>
 
 <script lang="ts">
+import { LocalStorage } from "@/electron/store";
 import Vue from "vue";
+const { Store }: { Store: LocalStorage } = window.electronTools;
 
 export default Vue.extend({
   data: () => ({
     // startWithOs: false,
-    showBreaksIn: null,
-    intervalForBreaks: null,
+    showBreaksIn: 0,
+    intervalForBreaks: 0,
   }),
   mounted: function () {
-    const {
-      electronTools: { showBreaksIn, intervalForBreaks },
-    } = window;
-    this.showBreaksIn = showBreaksIn;
-    this.intervalForBreaks = intervalForBreaks;
+    this.showBreaksIn = Store.get("showBreaksIn") as number;
+    this.intervalForBreaks = Store.get("intervalForBreaks") as number;
+  },
+  methods: {
+    onChangeSlider: function (value: number) {
+      Store.set("intervalForBreaks", value);
+    },
+    onChangeChekBoxes: function (value: number) {
+      Store.set("showBreaksIn", value);
+    },
   },
 });
 </script>
