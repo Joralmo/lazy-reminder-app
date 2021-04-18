@@ -8,6 +8,12 @@ import i18n from "./plugins/vue-i18n";
 
 Vue.config.productionTip = false;
 
+declare global {
+  interface Window {
+    electronTools: any;
+  }
+}
+
 new Vue({
   router,
   store,
