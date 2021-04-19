@@ -1,7 +1,7 @@
 import { contextBridge } from "electron";
 import { LocalStorage } from "./store";
 
-const Store = new LocalStorage();
+const Store = LocalStorage.getInstance();
 
 contextBridge.exposeInMainWorld("electronTools", {
   Store,
