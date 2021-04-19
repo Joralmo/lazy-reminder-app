@@ -3,7 +3,10 @@
     "showBreaksIn": "Mostrar descansos en",
     "window": "Ventana",
     "fullScreen": "Pantalla completa",
-    "nextBreak": "Proximo descanso en",
+    "nextBreak": "Proximo descanso",
     "madeBy": "Hecho con ❤️ por",
-    "intervalForBreaks": "Intervalo de los descansos (min)"
+    "intervalForBreaks": "Intervalo de los descansos (min)",
+    "breakDuration": "Duración del descanso (seg)",
+    "showOnAllMonitors": "Mostrar descanso en todos los monitores",
+    "fullScreenRecommended": "Pantalla completa recomendado"
 }

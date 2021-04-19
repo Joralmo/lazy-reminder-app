@@ -3,7 +3,10 @@
     "showBreaksIn": "Show breaks in",
     "window": "Window",
     "fullScreen": "Full screen",
-    "nextBreak": "Nex break in",
+    "nextBreak": "Next break",
     "madeBy": "Made with ❤️ by",
-    "intervalForBreaks": "Interval of breaks (min)"
+    "intervalForBreaks": "Interval of breaks (min)",
+    "breakDuration": "Break duration (seg)",
+    "showOnAllMonitors": "Show break on all monitors",
+    "fullScreenRecommended": "Full screen recommended"
 }
