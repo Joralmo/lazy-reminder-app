@@ -55,13 +55,38 @@
         <v-container>
           <v-row>
             <v-slider
-              @change="onChangeSlider"
+              @change="onChangeSliderInterval"
               v-model="intervalForBreaks"
               :label="$t('intervalForBreaks')"
               thumb-label="always"
               min="5"
               max="60"
             ></v-slider>
+          </v-row>
+        </v-container>
+      </v-row>
+      <v-row class="no-margin mt-7">
+        <v-container>
+          <v-row>
+            <v-slider
+              @change="onChangeSliderBreakDuration"
+              v-model="breakDuration"
+              :label="$t('breakDuration')"
+              thumb-label="always"
+              min="5"
+              max="60"
+            ></v-slider>
+          </v-row>
+        </v-container>
+      </v-row>
+      <v-row class="no-margin">
+        <v-container>
+          <v-row>
+            <v-checkbox
+              @change="onChangeShowOnAllMonitors"
+              v-model="showOnAllMonitors"
+              :label="$t('showOnAllMonitors')"
+            ></v-checkbox>
           </v-row>
         </v-container>
       </v-row>
@@ -79,17 +104,27 @@ export default Vue.extend({
     // startWithOs: false,
     showBreaksIn: 0,
     intervalForBreaks: 0,
+    breakDuration: 0,
+    showOnAllMonitors: false,
   }),
   mounted: function () {
     this.showBreaksIn = Store.get("showBreaksIn") as number;
     this.intervalForBreaks = Store.get("intervalForBreaks") as number;
+    this.breakDuration = Store.get("breakDuration") as number;
+    this.showOnAllMonitors = Store.get("showOnAllMonitors") as boolean;
   },
   methods: {
-    onChangeSlider: function (value: number) {
+    onChangeSliderInterval: function (value: number) {
       Store.set("intervalForBreaks", value);
     },
     onChangeChekBoxes: function (value: number) {
       Store.set("showBreaksIn", value);
+    },
+    onChangeSliderBreakDuration: function (value: number) {
+      Store.set("breakDuration", value);
+    },
+    onChangeShowOnAllMonitors: function (value: number) {
+      Store.set("showOnAllMonitors", value);
     },
   },
 });
